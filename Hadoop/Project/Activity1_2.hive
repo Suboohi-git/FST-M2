@@ -1,0 +1,8 @@
+#Create a table
+CREATE TABLE episodeV(name String,line String)ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' TBLPROPERTIES("skip.header.count"="2");
+
+#Load data into table
+LOAD DATA LOCAL INPATH '/episodeV_dialouges.txt' INTO TABLE episodeV;
+
+#Query to run on table
+SELECT name,COUNT(name) AS no_of_lines FROM episodeV GROUP BY name ORDER BY no_of_lines DESC;
